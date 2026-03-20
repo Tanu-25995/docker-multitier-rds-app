@@ -1,95 +1,80 @@
-Docker Multi-Tier Application (Frontend + Backend + AWS RDS)
+# 🚀 Docker Multi-Tier Application (Frontend + Backend + AWS RDS)
 
-This project is a 3-tier web application deployed on AWS EC2 using Docker Compose.
+This project demonstrates a **3-tier web application** deployed on AWS EC2 using Docker Compose.
 
-Frontend: Nginx
-Backend: Flask (Python REST API)
-Database: AWS RDS MySQL
+---
 
+## 🏗️ Architecture
 
-Architecture:
+User → Nginx (Frontend) → Flask API (Backend) → AWS RDS MySQL
 
-User Browser
-   |
-   |  HTTP :80
-   v
-Nginx (Frontend Container)
-   |
-   |  /api/* -> proxy
-   v
-Flask API (Backend Container)
-   |
-   |  MySQL :3306
-   v
-AWS RDS MySQL
+---
 
+## ⚙️ Tech Stack
 
-Features:
+AWS EC2 | AWS RDS | Docker | Docker Compose | Nginx | Flask
 
-- View students from database
-- Add new student
-- Update student name
-- Delete student
-- Backend connects to AWS RDS using environment variables
-- Fully containerized using Docker Compose
+---
 
+## ✨ Features
 
-Tech Stack:
+* Add, view, update, delete students
+* Backend connected to AWS RDS
+* Nginx reverse proxy
+* Fully containerized application
 
-- AWS EC2
-- AWS RDS (MySQL)
-- Docker
-- Docker Compose
-- Nginx
-- Flask (Python)
+---
 
+## 🚀 How to Run
 
-How to Run:
-
-1) Clone the repository
-
+```bash
 git clone https://github.com/Tanu-25995/docker-multitier-rds-app.git
 cd docker-multitier-rds-app
-
-
-2) Configure database in docker-compose.yml
-
-Open the file docker-compose.yml and update these values:
-
-DB_HOST
-DB_USER
-DB_PASSWORD
-DB_NAME
-
-
-3) Start the application
-
 docker compose up -d --build
+```
 
-
-4) Open in browser
-
+Open in browser:
 http://<EC2_PUBLIC_IP>/
 
+---
 
-Database Setup (First Time Only):
+## 🛢️ Database Setup (if needed)
 
-If you get this error: Unknown database appdb
+```bash
+mysql -h <RDS_ENDPOINT> -u admin -p
+```
 
-Run:
-
-sudo apt update -y
-sudo apt install -y mysql-client
-mysql -h <RDS_ENDPOINT> -u <DB_USER> -p
-
-Then inside MySQL run:
-
+```sql
 CREATE DATABASE appdb;
-EXIT;
+```
 
+---
 
-Notes:
+## 📸 Screenshots
 
-- Frontend and backend run in Docker containers.
-- Database is hosted on AWS RDS.
-- Docker Compose is used to run all services together.
+Application UI
+![App](screenshots/app.png)
+
+Docker Containers
+![Docker](screenshots/docker-containers.png)
+
+Docker Compose Run
+![Compose](screenshots/docker-compose-run.png)
+
+EC2 Instance
+![EC2](screenshots/ec2-instance.png)
+
+RDS Database
+![RDS](screenshots/rds.png)
+
+MySQL Connection
+![MySQL](screenshots/mysql-connection.png)
+
+GitHub Repository
+![GitHub](screenshots/github-repo.png)
+
+---
+
+## 📝 Notes
+
+Docker Compose runs frontend and backend, while database is hosted on AWS RDS.
